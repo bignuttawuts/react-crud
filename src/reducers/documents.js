@@ -1,5 +1,4 @@
 const documents = (state = [], action) => {
-    console.log('action', action)
     switch (action.type) {
         case 'ADD_DOCUMENT':
             return [

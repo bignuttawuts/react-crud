@@ -1,6 +1,6 @@
 let nextTodoId = 0
 
-export const addTodo = text => {
+export const addDocument = text => {
     return {
         type: 'ADD_DOCUMENT',
         id: nextTodoId++,
