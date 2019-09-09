@@ -1,9 +1,9 @@
 let nextTodoId = 1;
 
-export const addDocument = text => {
+export const addDocument = (document) => {
     return {
         type: 'ADD_DOCUMENT',
         id: nextTodoId++,
-        text
+        ...document
     }
 }

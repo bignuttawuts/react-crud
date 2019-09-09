@@ -5,8 +5,10 @@ const documents = (state = [], action) => {
                 ...state,
                 {
                     id: action.id,
-                    text: action.text,
-                    completed: false
+                    field1: action.field1,
+                    field2: action.field2,
+                    field3: action.field3,
+                    field4: action.field4
                 }
             ]
         default:

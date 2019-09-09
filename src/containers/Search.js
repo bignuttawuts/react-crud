@@ -5,28 +5,6 @@ import { connect } from 'react-redux';
 import { addDocument } from '../actions'
 
 class Search extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            field1: '',
-            field2: '',
-            field3: 2,
-            field4: false
-        };
-
-        this.handleInputChange = this.handleInputChange.bind(this);
-    }
-
-    handleInputChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
-    }
-
     render() {
         const props = this.props
         return (
@@ -52,10 +30,10 @@ class Search extends React.Component {
                             props.documents.map(document =>
                                 <tr key={document.id}>
                                     <td>{document.id}</td>
-                                    <td>{document.text}</td>
-                                    <td>Column 2</td>
-                                    <td>Column 3</td>
-                                    <td>Column 4</td>
+                                    <td>{document.field1}</td>
+                                    <td>{document.field2}</td>
+                                    <td>{document.field3}</td>
+                                    <td>{document.field4}</td>
                                     <td>
                                         <Link to={`/docs/${document.id}/view`}>View</Link>
                                     </td>
