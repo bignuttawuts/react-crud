@@ -5,13 +5,35 @@ import { connect } from 'react-redux';
 import { addDocument } from '../actions'
 
 class Search extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            field1: '',
+            field2: '',
+            field3: 2,
+            field4: false
+        };
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
     render() {
         const props = this.props
         return (
             <div>
                 <GoToHome />
                 <h1>Search : {props.match.params.id}</h1>
-                <button onClick={e => props.addDocument("New Document")}>Add Document</button>
+                <Link to="/docs/new">Add Document</Link>
                 <table>
                     <thead>
                         <tr>
