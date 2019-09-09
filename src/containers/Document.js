@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addDocument, getDocument } from '../actions'
-import { getDocumentById } from '../reducers/documents'
 
 class Document extends React.Component {
     constructor(props) {
@@ -31,8 +30,20 @@ class Document extends React.Component {
         getDocument(match.params.id)
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot)
+    {
+        const { getDocument, match, document } = this.props
+
+        this.setState({
+            field1: document.field1,
+            field2: document.field2,
+            field3: document.field3,
+            field4: document.field4
+        });
+    }
     render() {
         const props = this.props
+        
         return (
             <div>
                 <label>Document Id : {props.match.params.id}</label>
@@ -40,19 +51,19 @@ class Document extends React.Component {
                 <label>Mode : {props.match.params.mode}</label>
                 <br />
                 <label>
-                    Field1: <input name="field1" placeholder="field1" type="text" value={props.document.field1} onChange={this.handleInputChange} />
+                    Field1: <input name="field1" placeholder="field1" type="text" value={this.state.field1} onChange={this.handleInputChange} />
                 </label>
                 <br />
                 <label>
-                    Field2: <input name="field2" placeholder="field2" type="text" value={props.document.field2} onChange={this.handleInputChange} />
+                    Field2: <input name="field2" placeholder="field2" type="text" value={this.state.field2} onChange={this.handleInputChange} />
                 </label>
                 <br />
                 <label>
-                    Field3: <input name="field3" placeholder="field3" type="number" value={props.document.field3} onChange={this.handleInputChange} />
+                    Field3: <input name="field3" placeholder="field3" type="number" value={this.state.field3} onChange={this.handleInputChange} />
                 </label>
                 <br />
                 <label>
-                    Field4: <input name="field4" placeholder="field4" type="number" value={props.document.field4} onChange={this.handleInputChange} />
+                    Field4: <input name="field4" placeholder="field4" type="number" value={this.state.field4} onChange={this.handleInputChange} />
                 </label>
                 <br />
                 <button onClick={e => props.addDocument(this.state)}>Save</button>
@@ -62,7 +73,7 @@ class Document extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    document: getDocumentById(state, ownProps.match.params.id)
+    document: state.documents.viewDocument
 })
 
 const mapDispatchToProps = (dispatch) => ({

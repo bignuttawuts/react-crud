@@ -54,7 +54,7 @@ const getVisibleDocument = (documents) => {
 }
 
 const mapStateToProps = (state) => ({
-    documents: getVisibleDocument(state.documents)
+    documents: getVisibleDocument(state.documents.entities)
 })
 
 const mapDispatchToProps = (dispatch) => ({
