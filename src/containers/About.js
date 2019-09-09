@@ -4,8 +4,8 @@ import GoToHome from './GoToHome';
 function About() {
     return (
         <div>
-            <GoToHome />
             <h1>About</h1>
+            <GoToHome />
         </div>
     )
 }

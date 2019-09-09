@@ -7,3 +7,13 @@ export const addDocument = (document) => {
         ...document
     }
 }
+
+export const deleteDocument = (id) => ({
+    type: 'DELETE_DOCUMENT',
+    id
+})
+
+export const getDocument = (id) => ({
+    type: 'GET_DOCUMENT',
+    id
+})

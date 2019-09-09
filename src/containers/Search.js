@@ -1,16 +1,13 @@
 import React from 'react';
-import GoToHome from './GoToHome';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addDocument } from '../actions'
+import { deleteDocument } from '../actions'
 
 class Search extends React.Component {
     render() {
         const props = this.props
         return (
             <div>
-                <GoToHome />
-                <h1>Search : {props.match.params.id}</h1>
                 <Link to="/docs/new">Add Document</Link>
                 <table>
                     <thead>
@@ -41,7 +38,7 @@ class Search extends React.Component {
                                         <Link to={`/docs/${document.id}/edit`}>Edit</Link>
                                     </td>
                                     <td>
-                                        <button>Delete</button>
+                                        <button onClick={() => props.deleteDocument(document.id)}>Delete</button>
                                     </td>
                                 </tr>
                             )}
@@ -52,12 +49,16 @@ class Search extends React.Component {
     }
 }
 
+const getVisibleDocument = (documents) => {
+    return documents.filter(document => !document.isDeleted);
+}
+
 const mapStateToProps = (state) => ({
-    documents: state.documents
+    documents: getVisibleDocument(state.documents)
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    addDocument: text => dispatch(addDocument(text))
+    deleteDocument: id => dispatch(deleteDocument(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

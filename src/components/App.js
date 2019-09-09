@@ -12,7 +12,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/docs/:id/:mode" component={Document} />
-        <Route path="/docs/new" component={Document} />
+        <Route path="/docs/:mode" component={Document} />
         <Route path="/docs" component={Search} />
         <Route path="/about" component={About} />
         <Route path="/" component={Home} />
