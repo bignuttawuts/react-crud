@@ -1,4 +1,4 @@
-let nextTodoId = 0
+let nextTodoId = 1;
 
 export const addDocument = text => {
     return {

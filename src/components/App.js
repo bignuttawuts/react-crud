@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from '../containers/NavBar';
+import Search from '../containers/Search';
 import Document from '../containers/Document';
 import Home from '../containers/Home';
 import About from '../containers/About';
@@ -10,7 +11,9 @@ function App() {
     <div>
       <NavBar />
       <Switch>
-        <Route path="/doc/:id" component={Document} />
+        <Route path="/docs/:id/:mode" component={Document} />
+        <Route path="/docs/new" component={Document} />
+        <Route path="/docs" component={Search} />
         <Route path="/about" component={About} />
         <Route path="/" component={Home} />
       </Switch>

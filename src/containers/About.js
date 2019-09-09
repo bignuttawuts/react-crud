@@ -1,8 +1,12 @@
 import React from 'react';
+import GoToHome from './GoToHome';
 
 function About() {
     return (
-        <h1>About</h1>
+        <div>
+            <GoToHome />
+            <h1>About</h1>
+        </div>
     )
 }
 
