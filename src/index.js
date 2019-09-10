@@ -8,7 +8,7 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
-const middlewares = [ thunk ];
+const middlewares = [thunk];
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
 render(
@@ -16,7 +16,7 @@ render(
         <Provider store={store}>
             <App />
         </Provider>
-    </BrowserRouter>, 
+    </BrowserRouter>,
     document.getElementById('root')
 );
 

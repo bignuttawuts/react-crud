@@ -5,7 +5,7 @@ const initialState = {
         props: {
             open: false
         },
-        data : null,
+        data: null,
         field1: 'a',
         field2: 'a',
         field3: '0',
@@ -16,7 +16,7 @@ const initialState = {
         props: {
             open: false
         },
-        data : null,
+        data: null,
         field1: 'www',
         field2: 'aaa',
         field3: '0',
@@ -73,12 +73,12 @@ const documents = (state = initialState, action) => {
                 }
             }
         case 'GET_DOCUMENTS':
-        {
-            return {
-                ...state,
-                data: action.payload
-            };
-        }
+            {
+                return {
+                    ...state,
+                    data: action.payload
+                };
+            }
         default:
             return state
     }
