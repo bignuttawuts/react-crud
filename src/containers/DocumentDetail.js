@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addDocument, getDocument } from '../actions'
 import _ from 'lodash';
 
 const newDocumentState = {
@@ -37,8 +36,8 @@ class DocumentDetail extends React.Component {
     }
 
     componentDidMount() {
-        const { getDocument, match } = this.props
-        getDocument(match.params.id)
+        //const { getDocument, match } = this.props
+        //getDocument(match.params.id)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -82,14 +81,4 @@ class DocumentDetail extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    document: state.documents.documentDetail,
-    documentDetail: state.documents.documentDetail
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    addDocument: document => dispatch(addDocument(document)),
-    getDocument: id => dispatch(getDocument(id))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentDetail)
+export default (DocumentDetail)
