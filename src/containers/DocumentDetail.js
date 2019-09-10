@@ -4,20 +4,9 @@ import { bindActionCreators } from 'redux';
 import _ from 'lodash';
 import * as Actions from '../actions';
 
-const newDocumentState = {
-    data: {
-        id: '',
-        field1: '',
-        field2: '',
-        field3: '',
-        field4: '',
-        isDeleted: false
-    }
-}
-
 class DocumentDetail extends React.Component {
 
-    state = { ...newDocumentState };
+    state = { data: null };
 
     componentDidMount() {
         this.updateDocumentState();
@@ -37,7 +26,7 @@ class DocumentDetail extends React.Component {
     }
 
     handleChange = (event) => {
-        this.setState(_.set({ ...this.state }, event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value));
+        this.setState({data: _.set({ ...this.state.data }, event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value)});
     }
 
     updateDocumentState = () => {
@@ -45,7 +34,7 @@ class DocumentDetail extends React.Component {
         const { documentId, mode } = params;
 
         if (mode === 'new') {
-            this.props.newDocuments();
+            this.props.newDocument();
         } else {
             this.props.getDocument(documentId)
         }
@@ -54,10 +43,10 @@ class DocumentDetail extends React.Component {
     render() {
         const props = this.props;
         const { data } = this.state;
-        
+
         return (
             data && <div>
-                <label>Document Id : {props.match.params.id}</label>
+                <label>Document Id : {props.match.params.documentId}</label>
                 <br />
                 <label>Mode : {props.match.params.mode}</label>
                 <br />
@@ -77,7 +66,7 @@ class DocumentDetail extends React.Component {
                     Field4: <input name="field4" placeholder="field4" type="text" value={data.field4} onChange={this.handleChange} />
                 </label>
                 <br />
-                <button onClick={e => props.addDocument(data)}>Save</button>
+                <button onClick={e => props.saveDocument(data)}>Save</button>
             </div>
         )
     }
@@ -90,7 +79,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
         getDocument: Actions.getDocument,
-        newDocument: Actions.getDocument
+        newDocument: Actions.newDocument,
+        saveDocument: Actions.saveDocument
     }, dispatch)
 )
 

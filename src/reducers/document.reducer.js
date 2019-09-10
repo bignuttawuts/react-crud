@@ -13,8 +13,17 @@ const documentReducer = function (state = initialState, action) {
                     data: action.payload
                 };
             }
+        case Actions.SAVE_DOCUMENT:
+            {
+                return {
+                    ...state,
+                    data: action.payload
+                };
+            }
         default:
-            return state
+            {
+                return state;
+            }
     }
 }
 
