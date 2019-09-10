@@ -1,0 +1,77 @@
+{
+  "documents": [
+    {
+      "id": 1,
+      "field1": "d",
+      "field2": "d",
+      "field3": "s",
+      "field4": "s",
+      "isDeleted": true
+    },
+    {
+      "id": 2,
+      "field1": "s",
+      "field2": "d",
+      "field3": "g",
+      "field4": "b",
+      "isDeleted": true
+    },
+    {
+      "id": 3,
+      "field1": "a",
+      "field2": "s",
+      "field3": "d",
+      "field4": "hhh",
+      "isDeleted": true
+    },
+    {
+      "id": 4,
+      "field1": "oooo",
+      "field2": "jjjj",
+      "field3": "hu",
+      "field4": "uu",
+      "isDeleted": true
+    },
+    {
+      "id": 5,
+      "field1": "asdasd",
+      "field2": "sadasd",
+      "field3": "asdasd",
+      "field4": "asdasd",
+      "isDeleted": true
+    },
+    {
+      "id": 6,
+      "field1": "ssdfsdfsdf",
+      "field2": "dds",
+      "field3": "a",
+      "field4": "f",
+      "isDeleted": true
+    },
+    {
+      "id": 7,
+      "field1": "dddd",
+      "field2": "dsdsd",
+      "field3": "afasdf",
+      "field4": "asdfasd",
+      "isDeleted": false
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
