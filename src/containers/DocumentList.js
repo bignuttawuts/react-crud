@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteDocument } from '../actions'
+import { deleteDocument, openEditDocument } from '../actions'
 
-class Search extends React.Component {
+class DocumentList extends React.Component {
     render() {
         const props = this.props
         return (
@@ -36,6 +36,7 @@ class Search extends React.Component {
                                     </td>
                                     <td>
                                         <Link to={`/docs/${document.id}/edit`}>Edit</Link>
+                                        <button onClick={() => props.openEditDocument(document)}>Edit</button>
                                     </td>
                                     <td>
                                         <button onClick={() => props.deleteDocument(document.id)}>Delete</button>
@@ -58,7 +59,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    deleteDocument: id => dispatch(deleteDocument(id))
+    deleteDocument: id => dispatch(deleteDocument(id)),
+    openEditDocument: document => dispatch(openEditDocument(document))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search)
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentList)

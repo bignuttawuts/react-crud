@@ -1,10 +1,25 @@
 const initialState = {
-    entities: [],
-    viewDocument: {
-        field1: '',
-        field2: '',
-        field3: 0,
-        field4: 0
+    entities: [{
+        type: 'new',
+        props: {
+            open: false
+        },
+        data : null,
+        field1: 'a',
+        field2: 'a',
+        field3: '0',
+        field4: '0'
+    }],
+    documentDetail: {
+        type: 'new',
+        props: {
+            open: false
+        },
+        data : null,
+        field1: 'www',
+        field2: 'aaa',
+        field3: '0',
+        field4: '0'
     }
 }
 
@@ -43,7 +58,18 @@ const documents = (state = initialState, action) => {
                 entities: [
                     ...state.entities
                 ],
-                viewDocument: state.entities.find((document) => document.id === +action.id) || initialState.viewDocument
+                documentDetail: state.entities.find((document) => document.id === +action.id) || initialState.documentDetail
+            }
+        case 'OPEN_EDIT_DOCUMENT':
+            return {
+                ...state,
+                documentDetail: {
+                    type: 'edit',
+                    props: {
+                        open: true
+                    },
+                    data: action.data
+                }
             }
         default:
             return state

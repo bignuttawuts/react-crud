@@ -17,3 +17,8 @@ export const getDocument = (id) => ({
     type: 'GET_DOCUMENT',
     id
 })
+
+export const openEditDocument = (data) => ({
+    type: 'OPEN_EDIT_DOCUMENT',
+    data
+})
