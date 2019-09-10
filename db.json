@@ -50,10 +50,18 @@
     },
     {
       "id": 7,
-      "field1": "dddd",
-      "field2": "dsdsd",
-      "field3": "afasdf",
-      "field4": "asdfasd",
+      "field1": "Nuttawut",
+      "field2": "Singhabut",
+      "field3": "29",
+      "field4": "Green, Yellow",
+      "isDeleted": false
+    },
+    {
+      "id": 8,
+      "field1": "Sujittra",
+      "field2": "Prakam",
+      "field3": "30",
+      "field4": "Blue",
       "isDeleted": false
     }
   ],

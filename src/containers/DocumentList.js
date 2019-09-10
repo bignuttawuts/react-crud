@@ -22,7 +22,7 @@ class DocumentList extends React.Component {
         const props = this.props
         return (
             <div>
-                <Link to="/documents/new">Add Document</Link>
+                <Link to="/documents/new">Add Documents</Link>
                 <table>
                     <thead>
                         <tr>
