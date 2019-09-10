@@ -13,7 +13,11 @@ class DocumentList extends React.Component {
     handleClickView = (document) => {
         this.props.history.push('/documents/' + document.id + '/view');
     }
-
+    
+    handleClickDelete = (document) => {
+        this.props.deleteDocument(document);
+    }
+    
     render() {
         const props = this.props
         return (
@@ -23,10 +27,10 @@ class DocumentList extends React.Component {
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Column 1</th>
-                            <th>Column 2</th>
-                            <th>Column 3</th>
-                            <th>Column 4</th>
+                            <th>Field 1</th>
+                            <th>Field 2</th>
+                            <th>Field 3</th>
+                            <th>Field 4</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -41,6 +45,7 @@ class DocumentList extends React.Component {
                                     <td>{document.field4}</td>
                                     <td>
                                         <button onClick={event => this.handleClickView(document)}>View</button>
+                                        <button onClick={event => this.handleClickDelete(document)}>Delete</button>
                                     </td>
                                 </tr>
                             )}
@@ -52,12 +57,13 @@ class DocumentList extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    documents: state.documents.data
+    documents: state.documents.data.filter(document => !document.isDeleted)
 })
 
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({
-        getDocuments: Actions.getDocuments
+        getDocuments: Actions.getDocuments,
+        deleteDocument: Actions.deleteDocument
     }, dispatch)
 )
 

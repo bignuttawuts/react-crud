@@ -14,3 +14,13 @@ export function getDocuments() {
         );
     }
 }
+
+export function deleteDocument(document) {
+    document.isDeleted = true;
+    const request = axios.patch(`http://localhost:3001/documents/${document.id}`, document);
+
+    return (dispatch) =>
+        request.then((response) => {
+            dispatch(getDocuments())
+        })
+}
