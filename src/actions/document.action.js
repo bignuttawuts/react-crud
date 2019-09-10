@@ -17,13 +17,13 @@ export function getDocument(documentId) {
 }
 
 export function saveDocument(document) {
-    const request = document.id === '' ? 
+    const request = document.id === '' ?
         axios.post('http://localhost:3001/documents', document)
         :
         axios.patch(`http://localhost:3001/documents/${document.id}`, document)
 
     return (dispatch) =>
-        request.then((response) =>{
+        request.then((response) => {
             dispatch({
                 type: SAVE_DOCUMENT,
                 payload: response.data

@@ -28,8 +28,6 @@ class DocumentList extends React.Component {
                             <th>Column 3</th>
                             <th>Column 4</th>
                             <th></th>
-                            <th></th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,13 +41,6 @@ class DocumentList extends React.Component {
                                     <td>{document.field4}</td>
                                     <td>
                                         <button onClick={event => this.handleClickView(document)}>View</button>
-                                    </td>
-                                    <td>
-                                        <Link to={`/documents/${document.id}/edit`}>Edit</Link>
-                                        <button onClick={() => props.openEditDocument(document)}>Edit</button>
-                                    </td>
-                                    <td>
-                                        <button onClick={() => props.deleteDocument(document.id)}>Delete</button>
                                     </td>
                                 </tr>
                             )}
