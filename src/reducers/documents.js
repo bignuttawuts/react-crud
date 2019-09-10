@@ -1,4 +1,5 @@
 const initialState = {
+    data: [],
     entities: [{
         type: 'new',
         props: {
@@ -71,6 +72,13 @@ const documents = (state = initialState, action) => {
                     data: action.data
                 }
             }
+        case 'GET_DOCUMENTS':
+        {
+            return {
+                ...state,
+                data: action.payload
+            };
+        }
         default:
             return state
     }

@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { deleteDocument, openEditDocument } from '../actions'
+import { bindActionCreators } from 'redux';
+import * as Actions from '../actions'
 
 class DocumentList extends React.Component {
+
+    componentDidMount() {
+        this.props.getDocuments();
+    }
+
     render() {
         const props = this.props
         return (
@@ -50,17 +56,13 @@ class DocumentList extends React.Component {
     }
 }
 
-const getVisibleDocument = (documents) => {
-    return documents.filter(document => !document.isDeleted);
-}
-
 const mapStateToProps = (state) => ({
-    documents: getVisibleDocument(state.documents.entities)
+    documents: state.documents.data
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    deleteDocument: id => dispatch(deleteDocument(id)),
-    openEditDocument: document => dispatch(openEditDocument(document))
-})
-
+const mapDispatchToProps = (dispatch) => (
+    bindActionCreators({
+        getDocuments: Actions.getDocuments
+    }, dispatch)
+)
 export default connect(mapStateToProps, mapDispatchToProps)(DocumentList)

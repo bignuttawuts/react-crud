@@ -1,4 +1,19 @@
+import axios from 'axios';
+
 let nextDocumentId = 1;
+
+export function getDocuments () {
+    return function (dispatch) {
+        const request = axios.get('http://localhost:3001/documents');
+        return request.then((response) => {
+                dispatch({
+                    type: 'GET_DOCUMENTS',
+                    payload: response.data.documents
+                })
+            }
+        );
+    }
+}
 
 export const addDocument = (document) => {
     return {
