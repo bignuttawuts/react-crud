@@ -1,12 +1,12 @@
 import * as Actions from '../actions';
 
 const initialState = {
-    data: []
-}
+    data: null
+};
 
-const documentsReducer = (state = initialState, action) => {
+const documentReducer = function (state = initialState, action) {
     switch (action.type) {
-        case Actions.GET_DOCUMENTS:
+        case Actions.GET_DOCUMENT:
             {
                 return {
                     ...state,
@@ -18,4 +18,4 @@ const documentsReducer = (state = initialState, action) => {
     }
 }
 
-export default documentsReducer
+export default documentReducer;

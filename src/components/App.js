@@ -11,9 +11,9 @@ function App() {
     <div>
       <NavBar />
       <Switch>
-        <Route path="/docs/:id/:mode" component={DocumentDetail} />
-        <Route path="/docs/:mode" component={DocumentDetail} />
-        <Route path="/docs" component={DocumentList} />
+        <Route path="/documents/:documentId/:mode" component={DocumentDetail} />
+        <Route path="/documents/:mode" component={DocumentDetail} />
+        <Route path="/documents" component={DocumentList} />
         <Route path="/about" component={About} />
         <Route path="/" component={Home} />
       </Switch>

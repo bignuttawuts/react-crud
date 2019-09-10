@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as Actions from '../actions'
+import * as Actions from '../actions';
 
 class DocumentList extends React.Component {
 
@@ -10,11 +10,15 @@ class DocumentList extends React.Component {
         this.props.getDocuments();
     }
 
+    handleClickView = (document) => {
+        this.props.history.push('/documents/' + document.id + '/view');
+    }
+
     render() {
         const props = this.props
         return (
             <div>
-                <Link to="/docs/new">Add Document</Link>
+                <Link to="/documents/new">Add Document</Link>
                 <table>
                     <thead>
                         <tr>
@@ -38,10 +42,10 @@ class DocumentList extends React.Component {
                                     <td>{document.field3}</td>
                                     <td>{document.field4}</td>
                                     <td>
-                                        <Link to={`/docs/${document.id}/view`}>View</Link>
+                                        <button onClick={event => this.handleClickView(document)}>View</button>
                                     </td>
                                     <td>
-                                        <Link to={`/docs/${document.id}/edit`}>Edit</Link>
+                                        <Link to={`/documents/${document.id}/edit`}>Edit</Link>
                                         <button onClick={() => props.openEditDocument(document)}>Edit</button>
                                     </td>
                                     <td>
@@ -65,4 +69,5 @@ const mapDispatchToProps = (dispatch) => (
         getDocuments: Actions.getDocuments
     }, dispatch)
 )
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentList)
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DocumentList));

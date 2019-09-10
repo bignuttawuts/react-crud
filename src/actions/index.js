@@ -1,1 +1,2 @@
-export * from './documents.action'
+export * from './documents.action';
+export * from './document.action';
