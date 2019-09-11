@@ -10,13 +10,17 @@ function App() {
   return (
     <div>
       <NavBar />
-      <Switch>
-        <Route path="/documents/:documentId/:mode" component={DocumentDetail} />
-        <Route path="/documents/:mode" component={DocumentDetail} />
-        <Route path="/documents" component={DocumentList} />
-        <Route path="/about" component={About} />
-        <Route path="/" component={Home} />
-      </Switch>
+      <section className="section">
+        <div className="container">
+          <Switch>
+            <Route path="/documents/:documentId/:mode" component={DocumentDetail} />
+            <Route path="/documents/:mode" component={DocumentDetail} />
+            <Route path="/documents" component={DocumentList} />
+            <Route path="/about" component={About} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </div>
+      </section>
     </div>
   );
 }

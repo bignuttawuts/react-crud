@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../actions';
+import moment from 'moment'
 
 class DocumentList extends React.Component {
 
@@ -17,20 +18,23 @@ class DocumentList extends React.Component {
     handleClickDelete = (document) => {
         this.props.deleteDocument(document);
     }
-    
+     
     render() {
         const props = this.props
         return (
             <div>
-                <Link to="/documents/new">Add Documents</Link>
-                <table>
+                <Link className="button is-primary" to="/documents/new">Add Document</Link>
+                <table className="table is-bordered is-striped is-narrow is-hoverable">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Field 1</th>
-                            <th>Field 2</th>
-                            <th>Field 3</th>
-                            <th>Field 4</th>
+                            <th>PO No</th>
+                            <th>Create Date</th>
+                            <th>Status</th>
+                            <th>Supplier</th>
+                            <th>Delivery Date</th>
+                            <th>Requested By</th>
+                            <th>Approved By</th>
+                            <th>Department</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -39,13 +43,18 @@ class DocumentList extends React.Component {
                             props.documents.map(document =>
                                 <tr key={document.id}>
                                     <td>{document.id}</td>
-                                    <td>{document.field1}</td>
+                                    <td>{moment(document.field1, moment.ISO_8601).format("YYYY-MM-DD")}</td>
                                     <td>{document.field2}</td>
-                                    <td>{document.field3}</td>
+                                    <td>{moment(document.field3, moment.ISO_8601).format("YYYY-MM-DD")}</td>
                                     <td>{document.field4}</td>
+                                    <td>{document.field5}</td>
+                                    <td>{document.field6}</td>
+                                    <td>{document.field7}</td>
                                     <td>
-                                        <button onClick={event => this.handleClickView(document)}>View</button>
-                                        <button onClick={event => this.handleClickDelete(document)}>Delete</button>
+                                        <div className="buttons">
+                                            <button className="button is-light" onClick={event => this.handleClickView(document)}>View</button>
+                                            <button className="button is-light" onClick={event => this.handleClickDelete(document)}>Delete</button>
+                                        </div>
                                     </td>
                                 </tr>
                             )}
