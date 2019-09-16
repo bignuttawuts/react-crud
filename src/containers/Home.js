@@ -1,12 +1,15 @@
 import React from 'react';
+import BookingContainer from './BookingContainer';
 
-function Home(props) {
-    return (
-        <div>
-            <h1>Home</h1>
-            
-        </div>
-    )
+class Home extends React.Component {
+
+    render() {
+        return (
+            <div>
+                <BookingContainer></BookingContainer>
+            </div>
+        )
+    }
 }
 
 export default (Home)
